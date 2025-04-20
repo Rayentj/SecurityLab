@@ -1,0 +1,15 @@
+C:\Users\lenovo\Desktop\MIU\ASD\Dental_Surgerie_Mngmt_system\DentalApp\DentalApp.Domain\bin\Debug\net8.0\DentalApp.Domain.deps.json
+C:\Users\lenovo\Desktop\MIU\ASD\Dental_Surgerie_Mngmt_system\DentalApp\DentalApp.Domain\bin\Debug\net8.0\DentalApp.Domain.dll
+C:\Users\lenovo\Desktop\MIU\ASD\Dental_Surgerie_Mngmt_system\DentalApp\DentalApp.Domain\bin\Debug\net8.0\DentalApp.Domain.pdb
+C:\Users\lenovo\Desktop\MIU\ASD\Dental_Surgerie_Mngmt_system\DentalApp\DentalApp.Domain\obj\Debug\net8.0\DentalApp.Domain.csproj.AssemblyReference.cache
+C:\Users\lenovo\Desktop\MIU\ASD\Dental_Surgerie_Mngmt_system\DentalApp\DentalApp.Domain\obj\Debug\net8.0\DentalApp.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lenovo\Desktop\MIU\ASD\Dental_Surgerie_Mngmt_system\DentalApp\DentalApp.Domain\obj\Debug\net8.0\DentalApp.Domain.AssemblyInfoInputs.cache
+C:\Users\lenovo\Desktop\MIU\ASD\Dental_Surgerie_Mngmt_system\DentalApp\DentalApp.Domain\obj\Debug\net8.0\DentalApp.Domain.AssemblyInfo.cs
+C:\Users\lenovo\Desktop\MIU\ASD\Dental_Surgerie_Mngmt_system\DentalApp\DentalApp.Domain\obj\Debug\net8.0\DentalApp.Domain.csproj.CoreCompileInputs.cache
+C:\Users\lenovo\Desktop\MIU\ASD\Dental_Surgerie_Mngmt_system\DentalApp\DentalApp.Domain\obj\Debug\net8.0\DentalApp.Domain.sourcelink.json
+C:\Users\lenovo\Desktop\MIU\ASD\Dental_Surgerie_Mngmt_system\DentalApp\DentalApp.Domain\obj\Debug\net8.0\DentalApp.Domain.dll
+C:\Users\lenovo\Desktop\MIU\ASD\Dental_Surgerie_Mngmt_system\DentalApp\DentalApp.Domain\obj\Debug\net8.0\refint\DentalApp.Domain.dll
+C:\Users\lenovo\Desktop\MIU\ASD\Dental_Surgerie_Mngmt_system\DentalApp\DentalApp.Domain\obj\Debug\net8.0\DentalApp.Domain.pdb
+C:\Users\lenovo\Desktop\MIU\ASD\Dental_Surgerie_Mngmt_system\DentalApp\DentalApp.Domain\obj\Debug\net8.0\ref\DentalApp.Domain.dll
+C:\Users\lenovo\Desktop\MIU\ASD\Dental_Surgerie_Mngmt_system\DentalApp\DentalApp.Domain\bin\Debug\net8.0\DentalApp.Domain.runtimeconfig.json
+C:\Users\lenovo\Desktop\MIU\ASD\Dental_Surgerie_Mngmt_system\DentalApp\DentalApp.Domain\obj\Debug\net8.0\DentalApp.Domain.genruntimeconfig.cache

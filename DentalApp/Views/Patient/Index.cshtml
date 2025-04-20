@@ -1,0 +1,34 @@
+﻿@using DentalApp.Domain.DTOs.Response
+@model IEnumerable<PatientResponseDto>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<h2>All Patients</h2>
+<a asp-action="Create" class="btn btn-primary mb-2">Create New Patient</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var patient in Model)
+        {
+            <tr>
+                <td>@patient.FullName</td>
+                <td>@patient.Email</td>
+                <td>@patient.PhoneNumber</td>
+                <td>@patient.AddressSummary</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@patient.PatientId">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@patient.PatientId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@patient.PatientId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

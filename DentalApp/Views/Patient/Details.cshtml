@@ -1,0 +1,16 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model DentalApp.Domain.DTOs.Response.PatientResponseDto
+
+@{
+    ViewData["Title"] = "Patient Details";
+}
+
+<h2>Patient Details</h2>
+
+<div>
+    <p><strong>Name:</strong> @Model.FullName</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+    <p><strong>Phone:</strong> @Model.PhoneNumber</p>
+</div>
+
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>

@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "yzNImtYONsAKwfOLDQ9pQcN3kHa/cn2WLGhCOI3JR2Q=",
+  "Source": "DentalApp.Api",
+  "BasePath": "_content/DentalApp.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
