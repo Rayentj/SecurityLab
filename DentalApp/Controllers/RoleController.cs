@@ -23,6 +23,8 @@ namespace DentalApp.Api.Controllers
         public async Task<ActionResult<RoleResponseDto>> GetById(int id)
         {
             var role = await _service.GetByIdAsync(id);
+            if (role == null)
+                return NotFound();
             return Ok(role);
         }
         [Authorize(Roles = "Admin")]

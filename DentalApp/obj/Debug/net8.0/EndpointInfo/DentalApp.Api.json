@@ -50,17 +50,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Address"
+                "$ref": "#/components/schemas/AddressRequestDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Address"
+                "$ref": "#/components/schemas/AddressRequestDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Address"
+                "$ref": "#/components/schemas/AddressRequestDto"
               }
             }
           }
@@ -127,6 +127,67 @@
             }
           }
         }
+      },
+      "put": {
+        "tags": [
+          "Address"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Address"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/api/Appointment": {
@@ -148,17 +209,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Appointment"
+                "$ref": "#/components/schemas/AppointmentRequestDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Appointment"
+                "$ref": "#/components/schemas/AppointmentRequestDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Appointment"
+                "$ref": "#/components/schemas/AppointmentRequestDto"
               }
             }
           }
@@ -183,6 +244,99 @@
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Appointment"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Appointment"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Appointment/paged": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
             }
           }
         ],
@@ -224,6 +378,134 @@
         }
       }
     },
+    "/api/Bill": {
+      "get": {
+        "tags": [
+          "Bill"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Bill/{id}": {
+      "get": {
+        "tags": [
+          "Bill"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Bill/patient/{patientId}": {
+      "get": {
+        "tags": [
+          "Bill"
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Bill"
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BillRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BillRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BillRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Bill/{id}/pay": {
+      "put": {
+        "tags": [
+          "Bill"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "isPaid",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Dentist": {
       "get": {
         "tags": [
@@ -231,7 +513,33 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DentistResponseDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DentistResponseDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DentistResponseDto"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -243,24 +551,41 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Dentist"
+                "$ref": "#/components/schemas/DentistRequestDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Dentist"
+                "$ref": "#/components/schemas/DentistRequestDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Dentist"
+                "$ref": "#/components/schemas/DentistRequestDto"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DentistResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DentistResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DentistResponseDto"
+                }
+              }
+            }
           }
         }
       }
@@ -283,7 +608,140 @@
         ],
         "responses": {
           "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DentistResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DentistResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DentistResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Dentist"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DentistRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DentistRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DentistRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DentistResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DentistResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DentistResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Dentist"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dentist/appointments": {
+      "get": {
+        "tags": [
+          "Dentist"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppointmentResponseDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppointmentResponseDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppointmentResponseDto"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -413,6 +871,157 @@
         }
       }
     },
+    "/api/PatientApi/paged": {
+      "get": {
+        "tags": [
+          "PatientApi"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PatientApi/appointments": {
+      "get": {
+        "tags": [
+          "PatientApi"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PatientApi/{id}/appointments/request": {
+      "post": {
+        "tags": [
+          "PatientApi"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/appointments/{id}/reschedule": {
+      "put": {
+        "tags": [
+          "PatientApi"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/appointments/{id}/cancel": {
+      "delete": {
+        "tags": [
+          "PatientApi"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Role": {
       "get": {
         "tags": [
@@ -420,7 +1029,33 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RoleResponseDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RoleResponseDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RoleResponseDto"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -447,6 +1082,141 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Role/{id}": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Role"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRoleRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRoleRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRoleRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Role"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -461,7 +1231,33 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SurgeryResponseDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SurgeryResponseDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SurgeryResponseDto"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -473,24 +1269,41 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Surgery"
+                "$ref": "#/components/schemas/SurgeryRequestDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Surgery"
+                "$ref": "#/components/schemas/SurgeryRequestDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Surgery"
+                "$ref": "#/components/schemas/SurgeryRequestDto"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurgeryResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurgeryResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurgeryResponseDto"
+                }
+              }
+            }
           }
         }
       }
@@ -508,6 +1321,133 @@
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurgeryResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurgeryResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurgeryResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Surgery"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SurgeryRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SurgeryRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SurgeryRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurgeryResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurgeryResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurgeryResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Surgery"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Surgery/paged": {
+      "get": {
+        "tags": [
+          "Surgery"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
             }
           }
         ],
@@ -616,12 +1556,73 @@
             "description": "OK"
           }
         }
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     }
   },
   "components": {
     "schemas": {
-      "Address": {
+      "AddressRequestDto": {
         "required": [
           "city",
           "state",
@@ -630,43 +1631,25 @@
         ],
         "type": "object",
         "properties": {
-          "addressId": {
-            "type": "integer",
-            "format": "int32"
-          },
           "street": {
-            "maxLength": 100,
-            "minLength": 1,
+            "maxLength": 50,
+            "minLength": 0,
             "type": "string"
           },
           "city": {
-            "maxLength": 50,
-            "minLength": 1,
+            "maxLength": 30,
+            "minLength": 0,
             "type": "string"
           },
           "state": {
-            "maxLength": 50,
-            "minLength": 1,
+            "maxLength": 20,
+            "minLength": 0,
             "type": "string"
           },
           "zip": {
             "maxLength": 10,
-            "minLength": 1,
+            "minLength": 0,
             "type": "string"
-          },
-          "patients": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Patient"
-            },
-            "nullable": true
-          },
-          "surgeries": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Surgery"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -699,7 +1682,35 @@
         },
         "additionalProperties": false
       },
-      "Appointment": {
+      "AppointmentRequestDto": {
+        "required": [
+          "dateTime",
+          "dentistId",
+          "patientId",
+          "surgeryId"
+        ],
+        "type": "object",
+        "properties": {
+          "dateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "surgeryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dentistId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "patientId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AppointmentResponseDto": {
         "type": "object",
         "properties": {
           "appointmentId": {
@@ -710,58 +1721,89 @@
             "type": "string",
             "format": "date-time"
           },
-          "surgeryId": {
+          "dentistName": {
+            "type": "string",
+            "nullable": true
+          },
+          "patientName": {
+            "type": "string",
+            "nullable": true
+          },
+          "surgeryName": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BillRequestDto": {
+        "required": [
+          "amount",
+          "appointmentId",
+          "isPaid"
+        ],
+        "type": "object",
+        "properties": {
+          "appointmentId": {
             "type": "integer",
             "format": "int32"
           },
-          "surgery": {
-            "$ref": "#/components/schemas/Surgery"
+          "amount": {
+            "type": "number",
+            "format": "double"
           },
-          "dentistId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "dentist": {
-            "$ref": "#/components/schemas/Dentist"
-          },
-          "patientId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "patient": {
-            "$ref": "#/components/schemas/Patient"
+          "isPaid": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
       },
       "CreateRoleRequestDto": {
+        "required": [
+          "name"
+        ],
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "nullable": true
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
           }
         },
         "additionalProperties": false
       },
       "CreateUserRequestDto": {
+        "required": [
+          "email",
+          "firstName",
+          "lastName",
+          "password",
+          "roleId"
+        ],
         "type": "object",
         "properties": {
           "firstName": {
-            "type": "string",
-            "nullable": true
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
           },
           "lastName": {
-            "type": "string",
-            "nullable": true
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
           },
           "email": {
+            "minLength": 1,
             "type": "string",
-            "nullable": true
+            "format": "email"
           },
           "password": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "roleId": {
             "type": "integer",
@@ -770,8 +1812,9 @@
         },
         "additionalProperties": false
       },
-      "Dentist": {
+      "DentistRequestDto": {
         "required": [
+          "dob",
           "email",
           "firstName",
           "lastName",
@@ -780,24 +1823,20 @@
         ],
         "type": "object",
         "properties": {
-          "dentistId": {
-            "type": "integer",
-            "format": "int32"
-          },
           "firstName": {
-            "maxLength": 50,
-            "minLength": 1,
+            "maxLength": 30,
+            "minLength": 0,
             "type": "string"
           },
           "lastName": {
-            "maxLength": 50,
-            "minLength": 1,
+            "maxLength": 30,
+            "minLength": 0,
             "type": "string"
           },
           "phoneNumber": {
-            "maxLength": 20,
             "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "format": "tel"
           },
           "email": {
             "minLength": 1,
@@ -809,22 +1848,42 @@
             "format": "date-time"
           },
           "specialization": {
-            "maxLength": 100,
-            "minLength": 1,
+            "maxLength": 50,
+            "minLength": 0,
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DentistResponseDto": {
+        "type": "object",
+        "properties": {
+          "dentistId": {
+            "type": "integer",
+            "format": "int32"
           },
-          "appointments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Appointment"
-            },
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "specialization": {
+            "type": "string",
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "Patient": {
+      "PatientRequestDto": {
         "required": [
+          "dob",
           "email",
           "firstName",
           "lastName",
@@ -832,24 +1891,20 @@
         ],
         "type": "object",
         "properties": {
-          "patientId": {
-            "type": "integer",
-            "format": "int32"
-          },
           "firstName": {
             "maxLength": 50,
-            "minLength": 1,
+            "minLength": 0,
             "type": "string"
           },
           "lastName": {
             "maxLength": 50,
-            "minLength": 1,
+            "minLength": 0,
             "type": "string"
           },
           "phoneNumber": {
-            "maxLength": 20,
             "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "format": "tel"
           },
           "email": {
             "minLength": 1,
@@ -863,55 +1918,52 @@
           "addressId": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RoleResponseDto": {
+        "type": "object",
+        "properties": {
+          "roleId": {
+            "type": "integer",
+            "format": "int32"
           },
-          "address": {
-            "$ref": "#/components/schemas/Address"
-          },
-          "appointments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Appointment"
-            },
+          "name": {
+            "type": "string",
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "PatientRequestDto": {
+      "SurgeryRequestDto": {
+        "required": [
+          "addressId",
+          "name",
+          "phoneNumber"
+        ],
         "type": "object",
         "properties": {
-          "firstName": {
-            "type": "string",
-            "nullable": true
-          },
-          "lastName": {
-            "type": "string",
-            "nullable": true
+          "name": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
           },
           "phoneNumber": {
+            "minLength": 1,
             "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "dob": {
-            "type": "string",
-            "format": "date-time"
+            "format": "tel"
           },
           "addressId": {
+            "maxLength": 50,
+            "minLength": 0,
             "type": "integer",
             "format": "int32"
           }
         },
         "additionalProperties": false
       },
-      "Surgery": {
-        "required": [
-          "name",
-          "phoneNumber"
-        ],
+      "SurgeryResponseDto": {
         "type": "object",
         "properties": {
           "surgeryId": {
@@ -919,27 +1971,15 @@
             "format": "int32"
           },
           "name": {
-            "maxLength": 100,
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "phoneNumber": {
-            "maxLength": 20,
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
-          "addressId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "address": {
-            "$ref": "#/components/schemas/Address"
-          },
-          "appointments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Appointment"
-            },
+          "addressSummary": {
+            "type": "string",
             "nullable": true
           }
         },

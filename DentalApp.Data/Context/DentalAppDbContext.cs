@@ -17,6 +17,7 @@ namespace DentalApp.Data.Repositories
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Bill> Bills { get; set; }
         public DentalAppDbContext(DbContextOptions<DentalAppDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

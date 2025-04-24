@@ -1,0 +1,1 @@
+"DefaultConnection": "Server=DESKTOP-E66JD1L\\MSSQLSERVER01;Database=DentalAppSystem;Trusted_Connection=True;TrustServerCertificate=True;"

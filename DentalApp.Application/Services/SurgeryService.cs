@@ -66,6 +66,20 @@ namespace DentalApp.Application.Services
             _repository.Delete(entity);
             return await _repository.SaveChangesAsync();
         }
+
+        public async Task<PaginatedResponse<SurgeryResponseDto>> GetPagedAsync(PagingRequest request)
+        {
+             var (entities, total) = await _repository.GetPagedAsync(request);
+            var items = _mapper.Map<IEnumerable<SurgeryResponseDto>>(entities);
+
+            return new PaginatedResponse<SurgeryResponseDto>
+            {
+                Page = request.Page,
+                Size = request.Size,
+                TotalCount = total,
+                Items = items
+            };
+        }
     }
 
 }

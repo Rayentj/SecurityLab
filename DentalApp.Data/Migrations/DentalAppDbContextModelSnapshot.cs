@@ -75,6 +75,10 @@ namespace DentalApp.Data.Migrations
                     b.Property<int>("PatientId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("SurgeryId")
                         .HasColumnType("int");
 
@@ -87,6 +91,38 @@ namespace DentalApp.Data.Migrations
                     b.HasIndex("SurgeryId");
 
                     b.ToTable("Appointments");
+                });
+
+            modelBuilder.Entity("DentalApp.Domain.Model.Bill", b =>
+                {
+                    b.Property<int>("BillId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BillId"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("AppointmentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsPaid")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("PatientId")
+                        .HasColumnType("int");
+
+                    b.HasKey("BillId");
+
+                    b.HasIndex("AppointmentId");
+
+                    b.HasIndex("PatientId");
+
+                    b.ToTable("Bills");
                 });
 
             modelBuilder.Entity("DentalApp.Domain.Model.Dentist", b =>
@@ -276,6 +312,25 @@ namespace DentalApp.Data.Migrations
                     b.Navigation("Patient");
 
                     b.Navigation("Surgery");
+                });
+
+            modelBuilder.Entity("DentalApp.Domain.Model.Bill", b =>
+                {
+                    b.HasOne("DentalApp.Domain.Model.Appointment", "Appointment")
+                        .WithMany()
+                        .HasForeignKey("AppointmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DentalApp.Domain.Model.Patient", "Patient")
+                        .WithMany()
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Appointment");
+
+                    b.Navigation("Patient");
                 });
 
             modelBuilder.Entity("DentalApp.Domain.Model.Patient", b =>

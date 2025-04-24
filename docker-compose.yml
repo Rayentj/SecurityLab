@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      SA_PASSWORD: "NewPassword123!"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - dentalnet
+
+  dentalapp-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dentalapp-api
+    ports:
+      - "5000:80"  # local:container
+    depends_on:
+      - sqlserver
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=DentalAppSystem;User=sa;Password=YourStrong!Pass123;TrustServerCertificate=True;Encrypt=False;
+
+      - PORT=80
+    networks:
+      - dentalnet
+
+networks:
+  dentalnet:

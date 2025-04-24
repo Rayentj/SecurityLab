@@ -33,6 +33,18 @@ namespace DentalApp.Infra
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
             services.AddScoped<IAppointmentService, AppointmentService>();
 
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IRoleService, RoleService>();
+
+
+            services.AddScoped<ISurgeryRepository, SurgeryRepository>();
+            services.AddScoped<ISurgeryService, SurgeryService>();
+
+            services.AddScoped<IBillRepository, BillRepository>();
+            services.AddScoped<IBillService, BillService>();
+
+
+
 
         }
     }

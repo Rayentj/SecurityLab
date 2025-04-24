@@ -73,6 +73,15 @@ namespace DentalApp.Api.Mapper
             CreateMap<CreateRoleRequestDto, Role>();
             CreateMap<Role, RoleResponseDto>();
 
+            CreateMap<Bill, BillResponseDto>()
+    .ForMember(dest => dest.PatientName,
+               opt => opt.MapFrom(src => $"{src.Patient.FirstName} {src.Patient.LastName}"))
+    .ForMember(dest => dest.AppointmentSummary,
+               opt => opt.MapFrom(src => $"{src.Appointment.DateTime:g} with Dentist ID {src.Appointment.DentistId}")); // Customize summary
+
+            CreateMap<BillRequestDto, Bill>();
+
+
 
 
         }

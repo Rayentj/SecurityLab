@@ -1,4 +1,5 @@
 ﻿using DentalApp.Data.Repositories.Interfaces;
+using DentalApp.Domain.DTOs.Request;
 using DentalApp.Domain.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -47,5 +48,29 @@ namespace DentalApp.Data.Repositories
         {
             _context.Patients.Update(patient);
         }
+
+
+        /* public async Task<IEnumerable<Patient>> GetPagedAsync(int page, int size)
+         {
+             return await _context.Patients
+                 .Include(p => p.Address)
+                 .Skip((page - 1) * size)
+                 .Take(size)
+                 .ToListAsync();
+         }
+        */
+        public async Task<(IEnumerable<Patient>, int)> GetPagedAsync(PagingRequest request)
+        {
+            var query = _context.Patients.AsQueryable();
+
+            var total = await query.CountAsync();
+            var items = await query
+                .Skip((request.Page - 1) * request.Size)
+                .Take(request.Size)
+                .ToListAsync();
+
+            return (items, total);
+        }
+
     }
 }

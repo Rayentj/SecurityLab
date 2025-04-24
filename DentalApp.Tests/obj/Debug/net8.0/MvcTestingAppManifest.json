@@ -1,0 +1,7 @@
+{
+  "DentalApp.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\lenovo\\Desktop\\MIU\\ASD\\Dental_Surgerie_Mngmt_system\\DentalApp\\DentalApp",
+  "DentalApp.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\lenovo\\Desktop\\MIU\\ASD\\Dental_Surgerie_Mngmt_system\\DentalApp\\DentalApp.Application",
+  "DentalApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\lenovo\\Desktop\\MIU\\ASD\\Dental_Surgerie_Mngmt_system\\DentalApp\\DentalApp.Data",
+  "DentalApp.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\lenovo\\Desktop\\MIU\\ASD\\Dental_Surgerie_Mngmt_system\\DentalApp\\DentalApp.Domain",
+  "DentalApp.Infra, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\lenovo\\Desktop\\MIU\\ASD\\Dental_Surgerie_Mngmt_system\\DentalApp\\DentalApp.Infra"
+}

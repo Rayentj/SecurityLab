@@ -1,4 +1,4 @@
-using AutoMapper;
+﻿using AutoMapper;
 using DentalApp.Api.Mapper;
 using DentalApp.Data.Repositories;
 using DentalApp.Infra;
@@ -103,4 +103,9 @@ app.MapControllerRoute(
 // ? Still map all API controllers
 app.MapControllers(); // Your API controllers work as usual
 
+
+
+
 app.Run();
+
+public partial class Program { } // 👈 Needed for integration testing

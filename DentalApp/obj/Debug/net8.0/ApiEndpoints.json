@@ -28,8 +28,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "address",
-        "Type": "DentalApp.Domain.Model.Address",
+        "Name": "request",
+        "Type": "DentalApp.Domain.DTOs.Request.AddressRequestDto",
         "IsRequired": true
       }
     ],
@@ -72,6 +72,43 @@
     ]
   },
   {
+    "ContainingType": "DentalApp.Api.Controllers.AddressController",
+    "Method": "Update",
+    "RelativePath": "api/Address/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "DentalApp.Domain.DTOs.Request.AddressRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.AddressController",
+    "Method": "Delete",
+    "RelativePath": "api/Address/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DentalApp.Api.Controllers.AppointmentController",
     "Method": "GetAll",
     "RelativePath": "api/Appointment",
@@ -90,8 +127,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "appointment",
-        "Type": "DentalApp.Domain.Model.Appointment",
+        "Name": "request",
+        "Type": "DentalApp.Domain.DTOs.Request.AppointmentRequestDto",
         "IsRequired": true
       }
     ],
@@ -114,6 +151,64 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "DentalApp.Api.Controllers.AppointmentController",
+    "Method": "Update",
+    "RelativePath": "api/Appointment/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "DentalApp.Domain.DTOs.Request.AppointmentRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.AppointmentController",
+    "Method": "Delete",
+    "RelativePath": "api/Appointment/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.AppointmentController",
+    "Method": "GetPaged",
+    "RelativePath": "api/Appointment/paged",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "size",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DentalApp.Api.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/login",
@@ -130,6 +225,90 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "DentalApp.Api.Controllers.BillController",
+    "Method": "GetAll",
+    "RelativePath": "api/Bill",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.BillController",
+    "Method": "GetById",
+    "RelativePath": "api/Bill/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.BillController",
+    "Method": "UpdatePaymentStatus",
+    "RelativePath": "api/Bill/{id}/pay",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "isPaid",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.BillController",
+    "Method": "GetByPatientId",
+    "RelativePath": "api/Bill/patient/{patientId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patientId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.BillController",
+    "Method": "Create",
+    "RelativePath": "api/Bill/patient/{patientId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patientId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "DentalApp.Domain.DTOs.Request.BillRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DentalApp.Api.Controllers.DentistController",
     "Method": "GetAll",
     "RelativePath": "api/Dentist",
@@ -137,7 +316,17 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DentalApp.Domain.DTOs.Response.DentistResponseDto, DentalApp.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "DentalApp.Api.Controllers.DentistController",
@@ -149,11 +338,21 @@
     "Parameters": [
       {
         "Name": "dentist",
-        "Type": "DentalApp.Domain.Model.Dentist",
+        "Type": "DentalApp.Domain.DTOs.Request.DentistRequestDto",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "DentalApp.Domain.DTOs.Response.DentistResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "DentalApp.Api.Controllers.DentistController",
@@ -169,7 +368,84 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": [
+      {
+        "Type": "DentalApp.Domain.DTOs.Response.DentistResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.DentistController",
+    "Method": "Update",
+    "RelativePath": "api/Dentist/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "DentalApp.Domain.DTOs.Request.DentistRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DentalApp.Domain.DTOs.Response.DentistResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.DentistController",
+    "Method": "Delete",
+    "RelativePath": "api/Dentist/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.DentistController",
+    "Method": "GetMyAppointments",
+    "RelativePath": "api/Dentist/appointments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DentalApp.Domain.DTOs.Response.AppointmentResponseDto, DentalApp.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "DentalApp.Api.Controllers.PatientApiController",
@@ -251,6 +527,58 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "DentalApp.Api.Controllers.PatientApiController",
+    "Method": "RequestAppointment",
+    "RelativePath": "api/PatientApi/{id}/appointments/request",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "DentalApp.Domain.DTOs.Request.AppointmentRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.PatientApiController",
+    "Method": "GetAppointments",
+    "RelativePath": "api/PatientApi/appointments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.PatientApiController",
+    "Method": "GetPaged",
+    "RelativePath": "api/PatientApi/paged",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "size",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DentalApp.Api.Controllers.RoleController",
     "Method": "GetAll",
     "RelativePath": "api/Role",
@@ -258,7 +586,17 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DentalApp.Domain.DTOs.Response.RoleResponseDto, DentalApp.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "DentalApp.Api.Controllers.RoleController",
@@ -274,6 +612,89 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": [
+      {
+        "Type": "DentalApp.Domain.DTOs.Response.RoleResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.RoleController",
+    "Method": "GetById",
+    "RelativePath": "api/Role/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DentalApp.Domain.DTOs.Response.RoleResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.RoleController",
+    "Method": "Update",
+    "RelativePath": "api/Role/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "DentalApp.Domain.DTOs.Request.CreateRoleRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DentalApp.Domain.DTOs.Response.RoleResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.RoleController",
+    "Method": "Delete",
+    "RelativePath": "api/Role/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -284,7 +705,17 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DentalApp.Domain.DTOs.Response.SurgeryResponseDto, DentalApp.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "DentalApp.Api.Controllers.SurgeryController",
@@ -295,12 +726,22 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "surgery",
-        "Type": "DentalApp.Domain.Model.Surgery",
+        "Name": "request",
+        "Type": "DentalApp.Domain.DTOs.Request.SurgeryRequestDto",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "DentalApp.Domain.DTOs.Response.SurgeryResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "DentalApp.Api.Controllers.SurgeryController",
@@ -314,6 +755,84 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DentalApp.Domain.DTOs.Response.SurgeryResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.SurgeryController",
+    "Method": "Update",
+    "RelativePath": "api/Surgery/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "DentalApp.Domain.DTOs.Request.SurgeryRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DentalApp.Domain.DTOs.Response.SurgeryResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.SurgeryController",
+    "Method": "Delete",
+    "RelativePath": "api/Surgery/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.SurgeryController",
+    "Method": "GetPaged",
+    "RelativePath": "api/Surgery/paged",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "size",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -385,6 +904,80 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.UserController",
+    "Method": "Update",
+    "RelativePath": "api/User/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "DentalApp.Domain.DTOs.Request.CreateUserRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.UserController",
+    "Method": "Delete",
+    "RelativePath": "api/User/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.PatientApiController",
+    "Method": "Cancel",
+    "RelativePath": "appointments/{id}/cancel",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DentalApp.Api.Controllers.PatientApiController",
+    "Method": "Reschedule",
+    "RelativePath": "appointments/{id}/reschedule",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "DentalApp.Domain.DTOs.Request.AppointmentRequestDto",
         "IsRequired": true
       }
     ],

@@ -13,5 +13,8 @@ namespace DentalApp.Domain.DTOs.Response
         public string DentistName { get; set; }
         public string PatientName { get; set; }
         public string SurgeryName { get; set; }
+
+        public string Status { get; set; } = "Pending"; // or use an enum
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DentalApp.Application.Exceptions;
 using DentalApp.Application.Services.Interfaces;
 using DentalApp.Data.Repositories.Interfaces;
 using DentalApp.Domain.DTOs.Request;
@@ -27,12 +28,19 @@ namespace DentalApp.Application.Services
         public async Task<IEnumerable<UserResponseDto>> GetAllAsync()
         {
             var users = await _repository.GetAllAsync();
+
+            if (users == null || !users.Any())
+                throw new EntityNotFoundException("No users found in the system.");
+
             return _mapper.Map<IEnumerable<UserResponseDto>>(users);
         }
 
+
         public async Task<UserResponseDto> GetByIdAsync(int id)
         {
-            var user = await _repository.GetByIdAsync(id);
+            var user = await _repository.GetByIdAsync(id)
+                       ?? throw new EntityNotFoundException($"User with ID {id} not found");
+
             return _mapper.Map<UserResponseDto>(user);
         }
 
@@ -47,14 +55,33 @@ namespace DentalApp.Application.Services
             return _mapper.Map<UserResponseDto>(user);
         }
 
-        public Task<UserResponseDto> UpdateAsync(int id, CreateUserRequestDto dto)
+        public async Task<UserResponseDto> UpdateAsync(int id, CreateUserRequestDto dto)
         {
-            throw new NotImplementedException();
+            var user = await _repository.GetByIdAsync(id)
+                       ?? throw new EntityNotFoundException($"User with ID {id} not found");
+
+            // Check if email already exists for another user
+            var existingUser = await _repository.FindByEmailAsync(dto.Email);
+            if (existingUser != null && existingUser.UserId != id)
+            {
+                throw new DuplicateEmailException(dto.Email);
+            }
+
+            _mapper.Map(dto, user); // Update fields
+            _repository.Update(user);
+            await _repository.SaveChangesAsync();
+
+            return _mapper.Map<UserResponseDto>(user);
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var user = await _repository.GetByIdAsync(id)
+                       ?? throw new EntityNotFoundException($"User with ID {id} not found");
+
+            _repository.Delete(user);
+            return await _repository.SaveChangesAsync();
         }
+
     }
 }

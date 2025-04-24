@@ -18,7 +18,7 @@ namespace DentalApp.Api.Controllers
             _service = service;
         }
 
-        [Authorize(Roles = "Admin")]
+//        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AddressResponseDto>>> GetAll()
         {

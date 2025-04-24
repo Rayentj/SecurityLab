@@ -16,5 +16,6 @@ namespace DentalApp.Application.Services.Interfaces
         Task<SurgeryResponseDto> CreateAsync(SurgeryRequestDto request);
         Task<SurgeryResponseDto> UpdateAsync(int id, SurgeryRequestDto request);
         Task<bool> DeleteAsync(int id);
+        Task<PaginatedResponse<SurgeryResponseDto>> GetPagedAsync(PagingRequest request);
     }
 }

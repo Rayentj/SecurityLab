@@ -4,6 +4,7 @@ using DentalApp.Data.Repositories.Interfaces;
 using DentalApp.Domain.DTOs.Request;
 using DentalApp.Domain.DTOs.Response;
 using DentalApp.Domain.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,5 +61,23 @@ namespace DentalApp.Application.Services
             _repository.Delete(patient);
             return await _repository.SaveChangesAsync();
         }
+
+
+
+        public async Task<PaginatedResponse<PatientResponseDto>> GetPagedAsync(PagingRequest request)
+        {
+            var (entities, total) = await _repository.GetPagedAsync(request);
+            var items = _mapper.Map<IEnumerable<PatientResponseDto>>(entities);
+
+            return new PaginatedResponse<PatientResponseDto>
+            {
+                Page = request.Page,
+                Size = request.Size,
+                TotalCount = total,
+                Items = items
+            };
+        }
+
+       
     }
 }

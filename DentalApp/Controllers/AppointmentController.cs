@@ -56,5 +56,12 @@ namespace DentalApp.Api.Controllers
             var success = await _service.DeleteAsync(id);
             return success ? NoContent() : NotFound();
         }
+        [HttpGet("paged")]
+        public async Task<IActionResult> GetPaged([FromQuery] int page = 1, [FromQuery] int size = 10)
+        {
+            var request = new PagingRequest { Page = page, Size = size };
+            var result = await _service.GetPagedAsync(request);
+            return Ok(result);
+        }
     }
 }

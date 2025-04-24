@@ -1,4 +1,5 @@
-﻿using DentalApp.Domain.Model;
+﻿using DentalApp.Domain.DTOs.Request;
+using DentalApp.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,9 @@ namespace DentalApp.Data.Repositories.Interfaces
         void Update(Patient patient);
         void Delete(Patient patient);
         Task<bool> SaveChangesAsync();
+        //Task<IEnumerable<Patient>> GetPagedAsync(int page, int size);
+        Task<(IEnumerable<Patient>, int)> GetPagedAsync(PagingRequest request);
+
+
     }
 }

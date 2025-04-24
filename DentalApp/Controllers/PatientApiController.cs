@@ -2,6 +2,7 @@
 using DentalApp.Domain.DTOs.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace DentalApp.Api.Controllers
 {
@@ -10,9 +11,11 @@ namespace DentalApp.Api.Controllers
     public class PatientApiController : ControllerBase
     {
         private readonly IPatientService _service;
-        public PatientApiController(IPatientService service)
+        private readonly IAppointmentService _appointmentService;
+        public PatientApiController(IPatientService service, IAppointmentService appointmentService)
         {
             _service = service;
+            _appointmentService = appointmentService;
         }
         [Authorize(Roles = "Admin")]
         [HttpGet]
@@ -52,6 +55,62 @@ namespace DentalApp.Api.Controllers
             var success = await _service.DeleteAsync(id);
             if (!success) return NotFound();
             return NoContent();
+        }
+
+        [HttpGet("paged")]
+        public async Task<IActionResult> GetPaged([FromQuery] int page = 1, [FromQuery] int size = 10)
+        {
+            var request = new PagingRequest { Page = page, Size = size };
+            var result = await _service.GetPagedAsync(request);
+            return Ok(result);
+        }
+
+
+        [Authorize(Roles = "Patient,Admin")]
+        [HttpGet("appointments")]
+        public async Task<IActionResult> GetAppointments()
+        {
+            // Extract Patient ID from JWT claims
+            var patientIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (patientIdClaim == null)
+            {
+                return Unauthorized("Patient ID not found in token.");
+            }
+
+            if (!int.TryParse(patientIdClaim.Value, out int patientId))
+            {
+                return BadRequest("Invalid Patient ID in token.");
+            }
+
+            var appointments = await _appointmentService.GetByPatientIdAsync(patientId);
+            return Ok(appointments);
+        }
+
+
+        [Authorize(Roles = "Patient,Admin")]
+
+        [HttpPost("{id}/appointments/request")]
+        public async Task<IActionResult> RequestAppointment(int id, [FromBody] AppointmentRequestDto dto)
+        {
+            dto.PatientId = id;
+            var created = await _appointmentService.CreateAsync(dto);
+            return CreatedAtAction(nameof(GetAppointments), new { id = id }, created);
+        }
+
+        [Authorize(Roles = "Patient,Admin")]
+        [HttpPut("/appointments/{id}/reschedule")]
+        public async Task<IActionResult> Reschedule(int id, [FromBody] AppointmentRequestDto dto)
+        {
+            var success = await _appointmentService.UpdateAsync(id, dto);
+            return success ? NoContent() : NotFound();
+        }
+
+        [Authorize(Roles = "Patient,Admin")]
+        [HttpDelete("/appointments/{id}/cancel")]
+        public async Task<IActionResult> Cancel(int id)
+        {
+            var success = await _appointmentService.CancelAsync(id);
+            return success ? NoContent() : NotFound();
         }
     }
 }

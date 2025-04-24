@@ -1,9 +1,11 @@
-﻿using DentalApp.Application.Services.Interfaces;
+﻿using DentalApp.Application.Services;
+using DentalApp.Application.Services.Interfaces;
 using DentalApp.Domain.DTOs.Request;
 using DentalApp.Domain.DTOs.Response;
 using DentalApp.Domain.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace DentalApp.Api.Controllers
 {
@@ -12,10 +14,12 @@ namespace DentalApp.Api.Controllers
     public class DentistController : ControllerBase
     {
         private readonly IDentistService _service;
+        private readonly IAppointmentService _appointmentService;
 
-        public DentistController(IDentistService service)
+        public DentistController(IDentistService service, IAppointmentService appointmentService)
         {
             _service = service;
+            _appointmentService = appointmentService;
         }
         [Authorize(Roles = "Admin")]
         [HttpGet]
@@ -29,6 +33,7 @@ namespace DentalApp.Api.Controllers
         public async Task<ActionResult<DentistResponseDto>> GetById(int id)
         {
             var result = await _service.GetByIdAsync(id);
+            if (result == null) return NotFound();
             return Ok(result); // No need for null check; exception will handle it
         }
         [Authorize(Roles = "Admin")]
@@ -51,6 +56,29 @@ namespace DentalApp.Api.Controllers
         {
             var deleted = await _service.DeleteAsync(id);
             return deleted ? NoContent() : NotFound();
+        }
+
+
+
+        
+        [Authorize(Roles = "Dentist,Admin")]
+        [HttpGet("appointments")]
+        public async Task<ActionResult<IEnumerable<AppointmentResponseDto>>> GetMyAppointments()
+        {
+            // Extract Dentist ID from JWT claims
+            var dentistIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (dentistIdClaim == null)
+            {
+                return Unauthorized("Dentist ID not found in token.");
+            }
+
+            if (!int.TryParse(dentistIdClaim.Value, out int dentistId))
+            {
+                return BadRequest("Invalid Dentist ID in token.");
+            }
+
+            var appointments = await _appointmentService.GetByDentistIdAsync(dentistId);
+            return Ok(appointments);
         }
     }
 
